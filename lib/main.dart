@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'screens/movies/view.dart';
+import 'screens/movies_app/view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
-      home: const MoviesScreen(),
+      debugShowCheckedModeBanner: false,
+      home: const MoviesApp(),
     );
   }
 }
