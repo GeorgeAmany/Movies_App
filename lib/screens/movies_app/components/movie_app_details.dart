@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MovieDetails extends StatelessWidget {
+class MovieAppDetails extends StatelessWidget {
   final String imageUrll, isAdult, language, titleOfMovie, description;
-
   final num popularity;
 
-  const MovieDetails(
+  const MovieAppDetails(
       {Key? key,
       required this.imageUrll,
       required this.isAdult,

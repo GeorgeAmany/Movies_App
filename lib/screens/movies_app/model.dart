@@ -1,21 +1,18 @@
 class MoviesAppData {
-
   late final int page;
   late final List<Movie> movies;
   late final int totalPages;
   late final int totalResults;
 
-  MoviesAppData.fromJson(Map<String, dynamic> json){
+  MoviesAppData.fromJson(Map<String, dynamic> json) {
     page = json['page'];
-    movies = List.from(json['results']).map((e)=>Movie.fromJson(e)).toList();
+    movies = List.from(json['results']).map((e) => Movie.fromJson(e)).toList();
     totalPages = json['total_pages'];
     totalResults = json['total_results'];
   }
-
 }
 
 class Movie {
-
   late final bool adult;
   late final String backdropPath;
   late final List<int> genreIds;
@@ -31,7 +28,7 @@ class Movie {
   late final num voteAverage;
   late final int voteCount;
 
-  Movie.fromJson(Map<String, dynamic> json){
+  Movie.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     genreIds = List.castFrom<dynamic, int>(json['genre_ids']);
@@ -47,5 +44,4 @@ class Movie {
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
   }
-
 }

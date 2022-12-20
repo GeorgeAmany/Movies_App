@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+
 import 'components/item_movie.dart';
 import 'model.dart';
 
@@ -26,8 +27,8 @@ class _MoviesScreenState extends State<MoviesScreen> {
           if (snapshot.hasData) {
             final model = MoviesData.fromJson(snapshot.data!.data);
             return GridView.builder(
-              gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2),
               itemBuilder: (context, index) => ItemMovie(
                 imageUrl: model.movies[index].backdropPath,
                 title: model.movies[index].title,
