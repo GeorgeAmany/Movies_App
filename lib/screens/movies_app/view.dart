@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/screens/movies_app/cubit.dart';
 import 'package:movie_app/screens/movies_app/states.dart';
+import 'package:movie_app/utils/constants.dart';
 
 import 'components/movie_app_details.dart';
 
@@ -53,13 +54,16 @@ class MoviesApp extends StatelessWidget {
                             padding: const EdgeInsetsDirectional.only(
                                 top: 150, start: 5, end: 5, bottom: 5),
                             child: Container(
-                              color: Colors.red.withOpacity(.3),
+                              // color: Colors.red.withOpacity(.3),
+                              color: kThemeColour.withOpacity(0.5),
                               height: 50,
                               width: double.infinity,
-                              child: Text(
-                                cubit.model!.movies[index].title,
-                                style: const TextStyle(color: Colors.white),
-                                textAlign: TextAlign.center,
+                              child: Center(
+                                child: Text(
+                                  cubit.model!.movies[index].title,
+                                  style: const TextStyle(color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ),
@@ -85,6 +89,65 @@ class MoviesApp extends StatelessWidget {
                   itemCount: cubit.model!.movies.length,
                 );
               }),
+            ),
+            bottomNavigationBar: NavigationBarTheme(
+              data: NavigationBarThemeData(
+                indicatorColor: Theme.of(context).primaryColor,
+                labelTextStyle: const MaterialStatePropertyAll(
+                  TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: kMSWhite,
+                  ),
+                ),
+              ),
+              child: NavigationBar(
+                elevation: 0,
+                height: 60,
+                backgroundColor: kMSWhite,
+                // selectedIndex: _index,
+                labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+                animationDuration: const Duration(seconds: 1),
+                //use bloc and change index according
+                // onDestinationSelected: (index) => setState(() {
+                //   _index = index;
+                // }),
+                destinations: [
+                  NavigationDestination(
+                    icon: Icon(
+                      Icons.space_dashboard_rounded,
+                      color: Theme.of(context).primaryColor.withOpacity(0.8),
+                    ),
+                    selectedIcon: const Icon(
+                      Icons.space_dashboard_rounded,
+                      color: kMSWhite,
+                    ),
+                    label: "Dashboard",
+                  ),
+                  NavigationDestination(
+                    icon: Icon(
+                      Icons.home,
+                      color: Theme.of(context).primaryColor.withOpacity(0.8),
+                    ),
+                    selectedIcon: const Icon(
+                      Icons.home,
+                      color: kMSWhite,
+                    ),
+                    label: "Home",
+                  ),
+                  NavigationDestination(
+                    icon: Icon(
+                      Icons.settings,
+                      color: Theme.of(context).primaryColor.withOpacity(0.8),
+                    ),
+                    selectedIcon: const Icon(
+                      Icons.settings,
+                      color: kMSWhite,
+                    ),
+                    label: "Settings",
+                  ),
+                ],
+              ),
             ),
           );
         },
