@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/utils/constants.dart';
 
 class MovieAppDetails extends StatelessWidget {
   final String imageUrll, isAdult, language, titleOfMovie, description;
@@ -16,6 +17,7 @@ class MovieAppDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int _index = 1;
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
@@ -33,28 +35,67 @@ class MovieAppDetails extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+              Center(
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.red.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(
+                      "$titleOfMovie ",
+                      style: const TextStyle(color: Colors.white, fontSize: 25),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
               Image(
                 image: NetworkImage(
                     'https://image.tmdb.org/t/p/original/$imageUrll'),
               ),
               const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: const [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 14),
+                    child: Icon(
+                      Icons.notifications,
+                      color: Colors.amber,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 14),
+                    child: Icon(
+                      Icons.share,
+                      color: Colors.amber,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
                 height: 10,
               ),
               Text("Film for adult : $isAdult",
-                  style: const TextStyle(color: Colors.blue, fontSize: 25),
+                  style: const TextStyle(color: Colors.white, fontSize: 15),
                   textAlign: TextAlign.start),
               const SizedBox(
                 height: 10,
               ),
               Text("Language of this film : $language ",
-                  style: const TextStyle(color: Colors.amber, fontSize: 20),
+                  style: const TextStyle(color: Colors.white, fontSize: 20),
                   textAlign: TextAlign.start),
               const SizedBox(
                 height: 10,
               ),
-              Text("Title of this film : $titleOfMovie ",
-                  style: const TextStyle(color: Colors.blue, fontSize: 25),
-                  textAlign: TextAlign.start),
               const SizedBox(
                 height: 10,
               ),
@@ -62,6 +103,9 @@ class MovieAppDetails extends StatelessWidget {
                   style: const TextStyle(color: Colors.amber, fontSize: 20),
                   textAlign: TextAlign.start),
               const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
                 height: 10,
               ),
               Text("Popularity : $popularity",
